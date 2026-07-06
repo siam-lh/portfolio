@@ -11,7 +11,7 @@ export default async function ExperienceList() {
       <div className="container">
         <div className="mb-12 flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
           <div className="">
-            <h2 className="text-4xl font-bold tracking-tight text-white">Experiences</h2>
+            <h2 className="list-title">Experiences</h2>
 
             <p className="mt-3 text-gray-400">
               This highlights my professional journey, showcasing the roles I've held, the companies

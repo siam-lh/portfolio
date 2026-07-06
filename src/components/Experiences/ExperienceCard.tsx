@@ -17,8 +17,8 @@ export default function ExperienceCard({ experience }: ExperienceCardProps) {
   const logo = typeof experience.companyLogo === 'object' ? (experience.companyLogo as Media) : null
 
   return (
-    <div className="rounded-xl border border-white p-6 shadow-sm transition hover:shadow-md">
-      <div className="flex gap-5">
+    <div className="card-border-padded card-hover">
+      <div className="flex flex-col md:flex-row gap-5">
         {/* Logo */}
         <div className="flex-shrink-0">
           {logo?.url ? (
@@ -40,8 +40,8 @@ export default function ExperienceCard({ experience }: ExperienceCardProps) {
         <div className="flex-1">
           <div className="flex flex-wrap items-center justify-between gap-2">
             <div>
-              <h3 className="text-xl font-semibold">{experience.position}</h3>
-              <p className="font-medium">{experience.company}</p>
+              <h3 className="card-secondary-title">{experience.position}</h3>
+              <p className="card-subtitle">{experience.company}</p>
             </div>
 
             <span className="rounded-full bg-blue-100 px-3 py-1 text-sm text-blue-700">
@@ -64,11 +64,7 @@ export default function ExperienceCard({ experience }: ExperienceCardProps) {
 
           {experience.companyWebsite && (
             <div className="mt-3">
-              <Link
-                href={experience.companyWebsite}
-                target="_blank"
-                className="text-sm font-medium text-blue-600 hover:underline"
-              >
+              <Link href={experience.companyWebsite} target="_blank" className="link-btn">
                 Visit Company →
               </Link>
             </div>

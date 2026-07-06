@@ -11,7 +11,7 @@ export default function TestimonialCard({ testimonial }: Props) {
     testimonial.photo && typeof testimonial.photo !== 'string' ? (testimonial.photo as Media) : null
 
   return (
-    <article className="group relative overflow-hidden rounded-2xl border border-white bg-zinc-900/70 p-6 backdrop-blur transition-all duration-300 hover:-translate-y-1">
+    <article className=" bg-zinc-900/70 card-border-padded card-hover">
       <Quote className="absolute right-6 top-6 h-10 w-10 text-cyan-400/20" />
 
       <div className="mb-5 flex gap-1">

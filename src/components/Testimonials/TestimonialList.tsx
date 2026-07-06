@@ -12,7 +12,7 @@ export default async function TestimonialList() {
       <div className="container">
         <div className="mb-12 flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
           <div className="w-full mx-auto">
-            <h2 className="text-4xl font-bold tracking-tight text-white">Testimonials</h2>
+            <h2 className="list-title">Testimonials</h2>
 
             <p className="mt-3 text-gray-400">
               Hear from the people I've worked with. Their experiences and feedback reflect my

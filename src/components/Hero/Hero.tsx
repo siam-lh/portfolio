@@ -23,19 +23,13 @@ export default async function HeroSection() {
 
           <div className="mt-10 flex flex-col gap-4 sm:flex-row sm:justify-center lg:justify-start">
             {hero.primaryButtonLink && (
-              <Link
-                href={hero.primaryButtonLink}
-                className="rounded-lg bg-blue-600 px-6 py-3 font-medium transition hover:bg-blue-700"
-              >
+              <Link href={hero.primaryButtonLink} className="primary-btn">
                 {hero.primaryButtonText}
               </Link>
             )}
 
             {hero.secondaryButtonLink && (
-              <Link
-                href={hero.secondaryButtonLink}
-                className="rounded-lg border border-white/20 px-6 py-3 font-medium transition hover:bg-white hover:text-black"
-              >
+              <Link href={hero.secondaryButtonLink} className="primary-btn">
                 {hero.secondaryButtonText}
               </Link>
             )}

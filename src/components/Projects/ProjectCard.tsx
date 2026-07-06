@@ -8,14 +8,14 @@ type Props = {
 
 function ProjectCard({ project }: Props) {
   return (
-    <div className="flex h-full flex-col overflow-hidden rounded-lg border border-border shadow-lg transition-shadow hover:shadow-xl">
+    <div className="flex h-full flex-col card-border card-hover">
       <Link href={`/Projects/${project.slug}`}>
         <div className="relative h-48 w-full">
           <Image
             src={project.thumbnail.url}
             alt={project.title}
             fill
-            className="object-cover transition-transform duration-300 hover:scale-105"
+            className="object-cover rounded-t-2xl"
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
           />
         </div>
@@ -24,7 +24,7 @@ function ProjectCard({ project }: Props) {
       {/* Content */}
       <div className="flex flex-1 flex-col p-4">
         <Link href={`/Projects/${project.slug}`}>
-          <h2 className="text-lg font-bold hover:underline">{project.title}</h2>
+          <h2 className="card-title">{project.title}</h2>
         </Link>
 
         <p className="mt-2 text-sm text-text-secondary">{project.shortDescription}</p>
@@ -36,7 +36,7 @@ function ProjectCard({ project }: Props) {
               href={project.githubUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="hover:underline transition-transform duration-200 hover:scale-105"
+              className="link-"
             >
               GitHub
             </Link>
@@ -47,7 +47,7 @@ function ProjectCard({ project }: Props) {
               href={project.liveUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="hover:underline transition-transform duration-300 hover:scale-105"
+              className="link-btn"
             >
               Visit Site
             </Link>
@@ -58,7 +58,7 @@ function ProjectCard({ project }: Props) {
               href={project.demoVideo}
               target="_blank"
               rel="noopener noreferrer"
-              className="hover:underline transition-transform duration-300 hover:scale-105"
+              className="link-btn"
             >
               Demo
             </Link>

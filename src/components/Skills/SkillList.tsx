@@ -12,7 +12,7 @@ export default async function SkillList() {
       <div className="container">
         <div className="mb-12 flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
           <div className="">
-            <h2 className="text-4xl font-bold tracking-tight text-white">Skills</h2>
+            <h2 className="list-title">Skills</h2>
             <p className="mt-3 text-gray-400">
               A selection of skills that highlight my expertise in building scalable,
               high-performance, and user-focused applications.

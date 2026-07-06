@@ -9,17 +9,14 @@ type Props = {
 
 export default function BlogCard({ blog }: Props) {
   return (
-    <Link
-      href={`/Blogs/${blog.slug}`}
-      className="group overflow-hidden rounded-lg border border-border shadow-lg transition-shadow hover:shadow-xl bg-black"
-    >
+    <Link href={`/Blogs/${blog.slug}`} className="card-border card-hover bg-black">
       {blog.image && typeof blog.image !== 'string' && blog.image.url && (
         <div className="relative aspect-video overflow-hidden">
           <Image
             src={blog.image.url}
             alt={blog.title}
             fill
-            className="object-cover transition duration-500 group-hover:scale-105"
+            className="object-cover rounded-t-2xl"
           />
         </div>
       )}
@@ -30,9 +27,7 @@ export default function BlogCard({ blog }: Props) {
           <span>{new Date(blog.createdAt).toLocaleDateString()}</span>
         </div>
 
-        <h3 className="text-2xl font-bold text-white group-hover:underline transition">
-          {blog.title}
-        </h3>
+        <h3 className="card-title">{blog.title}</h3>
 
         <p className="line-clamp-3 text-zinc-400">{blog.shortDescription}</p>
 

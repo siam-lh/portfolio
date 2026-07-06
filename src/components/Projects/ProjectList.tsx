@@ -14,10 +14,10 @@ export default function ProjectsList({
   description = 'A collection of projects showcasing my work, technologies, and problem-solving experience.',
 }: Props) {
   return (
-    <section className="container py-16">
+    <section className="container py-6">
       <div>
         <div className="mb-12 flex flex-col items-center text-center">
-          <h1 className="text-4xl font-bold tracking-tight text-white md:text-5xl">{title}</h1>
+          <h1 className="list-title">{title}</h1>
 
           <p className="mt-2 max-w-2xl text-gray-400">{description}</p>
         </div>

@@ -14,7 +14,7 @@ export default async function FeaturedProjectList() {
       <div className="container">
         <div className="mb-12 flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
           <div className="">
-            <h2 className="text-4xl font-bold tracking-tight text-white">Featured Projects</h2>
+            <h2 className="list-title">Featured Projects</h2>
 
             <p className="mt-3 text-gray-400">
               A selection of projects that highlight my experience in building scalable,
@@ -22,10 +22,7 @@ export default async function FeaturedProjectList() {
             </p>
           </div>
 
-          <Link
-            href="/Projects"
-            className="inline-flex w-fit items-center gap-2 whitespace-nowrap rounded-lg border border-white/80 px-5 py-3 text-sm font-medium text-white transition hover:border-white"
-          >
+          <Link href="/Projects" className="primary-btn">
             View All →
           </Link>
         </div>
