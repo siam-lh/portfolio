@@ -14,6 +14,7 @@ import { Projects } from './collections/Projects'
 import { Blogs } from './collections/Blogs'
 import { BlogTags } from './collections/BlogTags'
 import { Hero } from './globals/Hero'
+import { SiteSettings } from './globals/SiteSettings'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -26,7 +27,7 @@ export default buildConfig({
     },
   },
   collections: [Users, Media, Skills, Experience, Testimonials, Projects, Blogs, BlogTags],
-  globals: [Hero],
+  globals: [Hero, SiteSettings],
   editor: lexicalEditor(),
   secret: process.env.PAYLOAD_SECRET || '',
   typescript: {

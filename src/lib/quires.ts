@@ -95,6 +95,7 @@ export const getHero = cache(async () => {
     slug: 'hero',
   })
 })
+
 export const getAllProjectSlugs = cache(async () => {
   const result = await payload.find({
     collection: 'projects',
@@ -129,4 +130,12 @@ export const getBlogBySlug = cache(async (slug: string) => {
     limit: 1,
   })
   return result.docs[0] ?? null
+})
+export const getSiteSettings = cache(async () => {
+  const payload = await getPayload({ config })
+
+  return await payload.findGlobal({
+    slug: 'site-settings',
+    depth: 1,
+  })
 })

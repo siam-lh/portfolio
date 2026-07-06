@@ -101,9 +101,11 @@ export interface Config {
   fallbackLocale: null;
   globals: {
     hero: Hero;
+    'site-settings': SiteSetting;
   };
   globalsSelect: {
     hero: HeroSelect<false> | HeroSelect<true>;
+    'site-settings': SiteSettingsSelect<false> | SiteSettingsSelect<true>;
   };
   locale: null;
   widgets: {
@@ -616,6 +618,72 @@ export interface Hero {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "site-settings".
+ */
+export interface SiteSetting {
+  id: string;
+  /**
+   * Shown in the browser tab title and as the navbar logo text.
+   */
+  siteName: string;
+  /**
+   * SVG or PNG. If omitted, the site name text is used instead.
+   */
+  logo?: (string | null) | Media;
+  /**
+   * These values are used as fallbacks. Individual pages can override them.
+   */
+  seo?: {
+    /**
+     * Used when a page has no custom title. Keep under 60 chars.
+     */
+    metaTitle?: string | null;
+    /**
+     * Used as the fallback description. Keep under 160 chars.
+     */
+    metaDescription?: string | null;
+    /**
+     * 1200×630px recommended for social sharing previews.
+     */
+    ogImage?: (string | null) | Media;
+    /**
+     * Include the @ — e.g. @yourusername.
+     */
+    twitterHandle?: string | null;
+  };
+  /**
+   * Ordered list of links shown in the main navbar.
+   */
+  navLinks?:
+    | {
+        label: string;
+        /**
+         * e.g. /blog
+         */
+        href: string;
+        openInNewTab?: boolean | null;
+        id?: string | null;
+      }[]
+    | null;
+  socialLinks?: {
+    github?: string | null;
+    linkedin?: string | null;
+    twitter?: string | null;
+    email?: string | null;
+    /**
+     * Uploaded PDF. A download link is generated automatically.
+     */
+    resume?: (string | null) | Media;
+  };
+  /**
+   * Use {year} as a placeholder — it is replaced at render time.
+   */
+  footerText?: string | null;
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "hero_select".
  */
 export interface HeroSelect<T extends boolean = true> {
@@ -628,6 +696,43 @@ export interface HeroSelect<T extends boolean = true> {
   primaryButtonLink?: T;
   secondaryButtonText?: T;
   secondaryButtonLink?: T;
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "site-settings_select".
+ */
+export interface SiteSettingsSelect<T extends boolean = true> {
+  siteName?: T;
+  logo?: T;
+  seo?:
+    | T
+    | {
+        metaTitle?: T;
+        metaDescription?: T;
+        ogImage?: T;
+        twitterHandle?: T;
+      };
+  navLinks?:
+    | T
+    | {
+        label?: T;
+        href?: T;
+        openInNewTab?: T;
+        id?: T;
+      };
+  socialLinks?:
+    | T
+    | {
+        github?: T;
+        linkedin?: T;
+        twitter?: T;
+        email?: T;
+        resume?: T;
+      };
+  footerText?: T;
   updatedAt?: T;
   createdAt?: T;
   globalType?: T;
