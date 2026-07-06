@@ -14,7 +14,7 @@ export default async function FeaturedBlogList() {
           <div className="max-w-2xl">
             <h2 className="list-title">Featured Blogs</h2>
 
-            <p className="mt-3 text-gray-400">
+            <p className="mt-3 text-gray-200">
               A selection of blogs that highlight my experience in building scalable,
               high-performance, and user-focused applications.
             </p>

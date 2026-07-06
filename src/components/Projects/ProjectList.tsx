@@ -19,7 +19,7 @@ export default function ProjectsList({
         <div className="mb-12 flex flex-col items-center text-center">
           <h1 className="list-title">{title}</h1>
 
-          <p className="mt-2 max-w-2xl text-gray-400">{description}</p>
+          <p className="mt-2 max-w-2xl text-gray-200">{description}</p>
         </div>
 
         {projects.length === 0 ? (

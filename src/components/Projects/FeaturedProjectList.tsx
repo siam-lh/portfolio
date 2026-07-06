@@ -16,7 +16,7 @@ export default async function FeaturedProjectList() {
           <div className="">
             <h2 className="list-title">Featured Projects</h2>
 
-            <p className="mt-3 text-gray-400">
+            <p className="mt-3 text-gray-200">
               A selection of projects that highlight my experience in building scalable,
               high-performance, and user-focused applications.
             </p>
