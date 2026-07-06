@@ -65,7 +65,7 @@ h1 {
 }
 
 a {
-  &:focus {
+  /* &:focus {
     opacity: 0.8;
     outline: none;
   }
@@ -73,7 +73,7 @@ a {
   &:active {
     opacity: 0.7;
     outline: none;
-  }
+  } */
 }
 
 svg {
@@ -87,7 +87,6 @@ header .container {
   padding: 80px 45px;
   max-width: 1600px;
   margin: 0 auto;
-  /* overflow: hidden; */
 
   @media (max-width: 400px) {
     padding: 0 24px;
@@ -152,5 +151,35 @@ header .container {
       background: rgb(60, 60, 60);
       border-radius: 4px;
     }
+  }
+}
+@layer components {
+  .card-border {
+    @apply rounded-2xl border border-white backdrop-blur;
+  }
+  .card-border-padded {
+    @apply rounded-2xl border border-white p-6 backdrop-blur;
+  }
+
+  .card-hover {
+    @apply transition-all duration-300 hover:-translate-y-1 hover:shadow-xl;
+  }
+  .card-title {
+    @apply text-2xl font-bold text-white transition-all duration-300 hover:-translate-y-1;
+  }
+  .card-secondary-title {
+    @apply text-xl font-semibold text-white;
+  }
+  .card-subtitle {
+    @apply font-medium text-white;
+  }
+  .list-title {
+    @apply text-4xl font-bold tracking-tight text-white;
+  }
+  .primary-btn {
+    @apply inline-flex w-fit items-center gap-2 whitespace-nowrap rounded-lg border border-white/80 px-5 py-3 text-sm font-medium text-white transition-all duration-300 hover:-translate-y-1 hover:bg-white hover:text-black;
+  }
+  .link-btn {
+    @apply text-sm font-medium text-white hover:underline transition-all duration-300 hover:-translate-y-1;
   }
 }
