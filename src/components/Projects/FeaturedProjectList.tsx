@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import { getFeaturedProjects } from '@/lib/quires'
+import { getFeaturedProjects } from '@/lib/queries'
 import ProjectCard from './ProjectCard'
 
 export default async function FeaturedProjectList() {

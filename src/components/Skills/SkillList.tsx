@@ -1,5 +1,5 @@
 import SkillCard from './SkillCard'
-import { getSkills } from '@/lib/quires'
+import { getSkills } from '@/lib/queries'
 
 export default async function SkillList() {
   const { docs: skills } = await getSkills()

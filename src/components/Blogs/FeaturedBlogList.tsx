@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import BlogCard from './BlogCard'
-import { getFeaturedBlogs } from '@/lib/quires'
+import { getFeaturedBlogs } from '@/lib/queries'
 
 export default async function FeaturedBlogList() {
   const { docs: blogs } = await getFeaturedBlogs()

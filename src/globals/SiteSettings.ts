@@ -84,9 +84,6 @@ export const SiteSettings: GlobalConfig = {
       minRows: 1,
       admin: {
         description: 'Ordered list of links shown in the main navbar.',
-        components: {
-          RowLabel: ({ data }: { data: { label?: string } }) => data?.label ?? 'Link',
-        },
       },
       fields: [
         {
@@ -178,7 +175,7 @@ export const SiteSettings: GlobalConfig = {
       name: 'footerText',
       type: 'text',
       label: 'Footer Copyright Text',
-      defaultValue: '© {year} — Built with Next.js & Payload CMS',
+      defaultValue: '© {year} — All rights reserved.',
       admin: {
         description: 'Use {year} as a placeholder — it is replaced at render time.',
       },

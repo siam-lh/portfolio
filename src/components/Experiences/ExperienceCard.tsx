@@ -20,7 +20,7 @@ export default function ExperienceCard({ experience }: ExperienceCardProps) {
     <div className="card-border-padded card-hover">
       <div className="flex flex-col md:flex-row gap-5">
         {/* Logo */}
-        <div className="flex-shrink-0">
+        <div className="flex-0">
           {logo?.url ? (
             <Image
               src={logo.url}

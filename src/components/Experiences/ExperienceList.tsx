@@ -1,5 +1,5 @@
 import ExperienceCard from './ExperienceCard'
-import { getExperiences } from '@/lib/quires'
+import { getExperiences } from '@/lib/queries'
 
 export default async function ExperienceList() {
   const { docs: experiences } = await getExperiences()

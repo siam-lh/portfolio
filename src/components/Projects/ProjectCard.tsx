@@ -1,23 +1,27 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import { Project } from '@/payload-types'
+import { isMedia } from '@/lib/helper'
 
 type Props = {
   project: Project
 }
 
 function ProjectCard({ project }: Props) {
+  const imageUrl = isMedia(project.thumbnail) ? project.thumbnail.url : undefined
   return (
     <div className="flex h-full flex-col card-border card-hover">
       <Link href={`/Projects/${project.slug}`}>
         <div className="relative h-48 w-full">
-          <Image
-            src={project.thumbnail.url}
-            alt={project.title}
-            fill
-            className="object-cover rounded-t-2xl"
-            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-          />
+          {imageUrl && (
+            <Image
+              src={imageUrl}
+              alt={project.title || 'Project Image'}
+              fill
+              className="object-cover rounded-t-2xl"
+              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+            />
+          )}
         </div>
       </Link>
 

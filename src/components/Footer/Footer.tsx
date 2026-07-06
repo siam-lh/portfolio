@@ -1,12 +1,12 @@
 import Link from 'next/link'
-import { getSiteSettings } from '@/lib/quires'
+import { getSiteSettings } from '@/lib/queries'
 
 export default async function Footer() {
   const settings = await getSiteSettings()
 
   const year = new Date().getFullYear()
 
-  const footerText = settings.footerText?.replace('{year}', year.toString())
+  const footerText = settings?.footerText?.replace('{year}', year.toString())
 
   return (
     <footer className="border-t border-zinc-800 py-10">
@@ -14,7 +14,7 @@ export default async function Footer() {
         <p className="text-center text-sm md:text-left">{footerText}</p>
 
         <div className="flex flex-wrap items-center justify-center gap-5">
-          {settings.socialLinks?.github && (
+          {settings?.socialLinks?.github && (
             <Link
               href={settings.socialLinks.github}
               className="link-btn"
@@ -25,7 +25,7 @@ export default async function Footer() {
             </Link>
           )}
 
-          {settings.socialLinks?.linkedin && (
+          {settings?.socialLinks?.linkedin && (
             <Link
               href={settings.socialLinks.linkedin}
               className="link-btn"
@@ -36,7 +36,7 @@ export default async function Footer() {
             </Link>
           )}
 
-          {settings.socialLinks?.twitter && (
+          {settings?.socialLinks?.twitter && (
             <Link
               href={settings.socialLinks.twitter}
               className="link-btn"
@@ -47,7 +47,7 @@ export default async function Footer() {
             </Link>
           )}
 
-          {settings.socialLinks?.resume?.url && (
+          {/* {settings?.socialLinks?.resume?.url && (
             <Link
               href={settings.socialLinks.resume.url}
               className="link-btn"
@@ -56,9 +56,9 @@ export default async function Footer() {
             >
               Resume
             </Link>
-          )}
+          )} */}
 
-          {settings.socialLinks?.email && (
+          {settings?.socialLinks?.email && (
             <Link href={`mailto:${settings.socialLinks.email}`}>Email</Link>
           )}
         </div>

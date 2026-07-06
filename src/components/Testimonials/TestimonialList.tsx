@@ -1,5 +1,5 @@
 import TestimonialCard from './TestimonialCard'
-import { getTestimonials } from '@/lib/quires'
+import { getTestimonials } from '@/lib/queries'
 
 export default async function TestimonialList() {
   const { docs: testimonials } = await getTestimonials()

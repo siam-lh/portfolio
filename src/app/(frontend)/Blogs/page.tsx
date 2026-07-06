@@ -1,4 +1,4 @@
-import { getAllBlogs } from '@/lib/quires'
+import { getAllBlogs } from '@/lib/queries'
 import { SearchBar } from '@/components/common/SearchBar'
 import { Pagination } from '@/components/common/Pagination'
 import BlogList from '@/components/Blogs/BlogList'
