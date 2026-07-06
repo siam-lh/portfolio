@@ -2,6 +2,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { getSiteSettings } from '@/lib/queries'
 import { isMedia } from '@/lib/helper'
+import NavLinks from './NavLinks'
 
 export default async function Navbar() {
   const settings = await getSiteSettings()
@@ -24,19 +25,7 @@ export default async function Navbar() {
         </Link>
 
         <nav>
-          <ul className="flex items-center gap-8">
-            {settings?.navLinks?.map((link: any) => (
-              <li key={link.href}>
-                <Link
-                  href={link.href}
-                  target={link.openInNewTab ? '_blank' : undefined}
-                  className="transition hover:text-primary"
-                >
-                  {link.label}
-                </Link>
-              </li>
-            ))}
-          </ul>
+          <NavLinks links={settings?.navLinks || []} />
         </nav>
       </div>
     </header>
