@@ -2,16 +2,32 @@ import type { CollectionConfig } from 'payload'
 
 export const Projects: CollectionConfig = {
   slug: 'projects',
-  versions: {
-    drafts: true,
-  },
   admin: {
     useAsTitle: 'title',
     defaultColumns: ['title', 'featured', 'displayOrder'],
   },
 
   access: {
-    read: () => true,
+    read: ({ req }) => {
+      if (req.user) return true
+      return {
+        or: [
+          {
+            _status: {
+              equals: 'published',
+            },
+          },
+          {
+            _status: {
+              exists: false,
+            },
+          },
+        ],
+      }
+    },
+  },
+   versions: {
+    drafts: true,
   },
 
   fields: [

@@ -169,6 +169,7 @@ export interface Media {
   alt: string;
   updatedAt: string;
   createdAt: string;
+  _status?: ('draft' | 'published') | null;
   url?: string | null;
   thumbnailURL?: string | null;
   filename?: string | null;
@@ -194,6 +195,7 @@ export interface Skill {
   icon?: (string | null) | Media;
   updatedAt: string;
   createdAt: string;
+  _status?: ('draft' | 'published') | null;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -217,6 +219,7 @@ export interface Experience {
   companyWebsite?: string | null;
   updatedAt: string;
   createdAt: string;
+  _status?: ('draft' | 'published') | null;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -239,6 +242,7 @@ export interface Testimonial {
   message: string;
   updatedAt: string;
   createdAt: string;
+  _status?: ('draft' | 'published') | null;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -315,6 +319,7 @@ export interface Blog {
   };
   updatedAt: string;
   createdAt: string;
+  _status?: ('draft' | 'published') | null;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -326,6 +331,7 @@ export interface BlogTag {
   slug: string;
   updatedAt: string;
   createdAt: string;
+  _status?: ('draft' | 'published') | null;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -455,6 +461,7 @@ export interface MediaSelect<T extends boolean = true> {
   alt?: T;
   updatedAt?: T;
   createdAt?: T;
+  _status?: T;
   url?: T;
   thumbnailURL?: T;
   filename?: T;
@@ -476,6 +483,7 @@ export interface SkillsSelect<T extends boolean = true> {
   icon?: T;
   updatedAt?: T;
   createdAt?: T;
+  _status?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -495,6 +503,7 @@ export interface ExperienceSelect<T extends boolean = true> {
   companyWebsite?: T;
   updatedAt?: T;
   createdAt?: T;
+  _status?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -510,6 +519,7 @@ export interface TestimonialsSelect<T extends boolean = true> {
   message?: T;
   updatedAt?: T;
   createdAt?: T;
+  _status?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -547,6 +557,7 @@ export interface BlogsSelect<T extends boolean = true> {
   fullDescription?: T;
   updatedAt?: T;
   createdAt?: T;
+  _status?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -557,6 +568,7 @@ export interface BlogTagsSelect<T extends boolean = true> {
   slug?: T;
   updatedAt?: T;
   createdAt?: T;
+  _status?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -613,6 +625,7 @@ export interface Hero {
   primaryButtonLink?: string | null;
   secondaryButtonText?: string | null;
   secondaryButtonLink?: string | null;
+  _status?: ('draft' | 'published') | null;
   updatedAt?: string | null;
   createdAt?: string | null;
 }
@@ -679,6 +692,7 @@ export interface SiteSetting {
    * Use {year} as a placeholder — it is replaced at render time.
    */
   footerText?: string | null;
+  _status?: ('draft' | 'published') | null;
   updatedAt?: string | null;
   createdAt?: string | null;
 }
@@ -696,6 +710,7 @@ export interface HeroSelect<T extends boolean = true> {
   primaryButtonLink?: T;
   secondaryButtonText?: T;
   secondaryButtonLink?: T;
+  _status?: T;
   updatedAt?: T;
   createdAt?: T;
   globalType?: T;
@@ -733,6 +748,7 @@ export interface SiteSettingsSelect<T extends boolean = true> {
         resume?: T;
       };
   footerText?: T;
+  _status?: T;
   updatedAt?: T;
   createdAt?: T;
   globalType?: T;

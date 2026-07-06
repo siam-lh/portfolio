@@ -9,7 +9,26 @@ export const Blogs: CollectionConfig = {
   },
 
   access: {
-    read: () => true,
+    read: ({ req }) => {
+      if (req.user) return true
+      return {
+        or: [
+          {
+            _status: {
+              equals: 'published',
+            },
+          },
+          {
+            _status: {
+              exists: false,
+            },
+          },
+        ],
+      }
+    },
+  },
+   versions: {
+    drafts: true,
   },
 
   fields: [
@@ -78,6 +97,7 @@ export const Blogs: CollectionConfig = {
             {
               name: 'shortDescription',
               type: 'textarea',
+              maxLength: 300,
               required: true,
             },
             {

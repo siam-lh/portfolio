@@ -9,8 +9,26 @@ export const Skills: CollectionConfig = {
   },
 
   access: {
-    read: () => true,
-    delete: () => true,
+    read: ({ req }) => {
+      if (req.user) return true
+      return {
+        or: [
+          {
+            _status: {
+              equals: 'published',
+            },
+          },
+          {
+            _status: {
+              exists: false,
+            },
+          },
+        ],
+      }
+    },
+  },
+   versions: {
+    drafts: true,
   },
 
   fields: [

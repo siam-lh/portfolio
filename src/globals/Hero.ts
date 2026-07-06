@@ -3,8 +3,27 @@ import type { GlobalConfig } from 'payload'
 export const Hero: GlobalConfig = {
   slug: 'hero',
 
-  access: {
-    read: () => true,
+    access: {
+    read: ({ req }) => {
+      if (req.user) return true
+      return {
+        or: [
+          {
+            _status: {
+              equals: 'published',
+            },
+          },
+          {
+            _status: {
+              exists: false,
+            },
+          },
+        ],
+      }
+    },
+  },
+   versions: {
+    drafts: true,
   },
 
   fields: [
