@@ -28,8 +28,8 @@ export function SearchBar({ initialQuery }: { initialQuery: string }) {
   }
 
   return (
-    <div className="relative w-full max-w-lg">
-      <Search size={18} className="absolute left-4 top-1/2 -translate-y-1/2 text-zinc-500" />
+    <div className="mx-auto relative w-full max-w-lg">
+      <Search size={18} className="absolute left-4 top-1/2 -translate-y-1/2" />
 
       <input
         type="search"
