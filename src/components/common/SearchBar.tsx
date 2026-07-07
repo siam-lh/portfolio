@@ -32,6 +32,7 @@ export function SearchBar({ initialQuery }: { initialQuery: string }) {
       <Search size={18} className="absolute left-4 top-1/2 -translate-y-1/2" />
 
       <input
+        aria-label="Search blogs"
         type="search"
         defaultValue={initialQuery}
         onChange={handleSearch}

@@ -21,18 +21,24 @@ export function Pagination({
   return (
     <nav aria-label="Pagination" className="flex items-center justify-center gap-2">
       {/* Previous */}
-      <Link
-        href={currentPage > 1 ? buildHref(currentPage - 1) : '#'}
-        aria-disabled={currentPage === 1}
-        className={`rounded-xl border px-4 py-2 text-sm font-medium transition-all duration-300 ${
-          currentPage === 1
-            ? 'pointer-events-none border-zinc-800 text-zinc-600'
-            : 'border-zinc-700 bg-zinc-900 text-zinc-300 hover:border-white hover:text-white'
-        }`}
-      >
-        ← Previous
-      </Link>
 
+      {currentPage > 1 ? (
+        <Link
+          aria-label="Go to previous page"
+          href={currentPage > 1 ? buildHref(currentPage - 1) : '#'}
+          aria-disabled={currentPage === 1}
+          className={`rounded-4xl border px-4 py-2 text-sm font-medium transition-all duration-300 hover:-translate-y-0.5 bg-white text-black`}
+        >
+          ←
+        </Link>
+      ) : (
+        <span
+          aria-disabled="true"
+          className="rounded-4xl border px-4 py-2 text-sm font-medium pointer-events-none"
+        >
+          ←
+        </span>
+      )}
       {/* Page Numbers */}
       <div className="flex items-center gap-2">
         {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => {
@@ -42,11 +48,12 @@ export function Pagination({
             <Link
               key={page}
               href={buildHref(page)}
+              aria-label={active ? `Current page, page ${page}` : `Go to page ${page}`}
               aria-current={active ? 'page' : undefined}
-              className={`flex h-10 w-10 items-center justify-center rounded-xl border text-sm font-medium transition-all duration-300 ${
+              className={`flex h-10 w-10 items-center justify-center rounded-4xl border text-sm font-medium transition-all duration-300 ${
                 active
                   ? 'border-white bg-white text-black'
-                  : 'border-zinc-700 bg-zinc-900 text-zinc-300 hover:-translate-y-0.5 hover:border-white hover:text-white'
+                  : ' hover:-translate-y-0.5 hover:border-white hover:text-white'
               }`}
             >
               {page}
@@ -56,17 +63,24 @@ export function Pagination({
       </div>
 
       {/* Next */}
-      <Link
-        href={currentPage < totalPages ? buildHref(currentPage + 1) : '#'}
-        aria-disabled={currentPage === totalPages}
-        className={`rounded-xl border px-4 py-2 text-sm font-medium transition-all duration-300 ${
-          currentPage === totalPages
-            ? 'pointer-events-none border-zinc-800 text-zinc-600'
-            : 'border-zinc-700 bg-zinc-900 text-zinc-300 hover:border-white hover:text-white'
-        }`}
-      >
-        Next →
-      </Link>
+
+      {currentPage < totalPages ? (
+        <Link
+          href={currentPage < totalPages ? buildHref(currentPage + 1) : '#'}
+          aria-label="Go to next page"
+          aria-disabled={currentPage === totalPages}
+          className="rounded-4xl border px-4 py-2 text-sm font-medium transition-all duration-300 hover:-translate-y-0.5 bg-white text-black"
+        >
+          →
+        </Link>
+      ) : (
+        <span
+          aria-disabled="true"
+          className="rounded-4xl border px-4 py-2 text-sm font-medium pointer-events-none"
+        >
+          →
+        </span>
+      )}
     </nav>
   )
 }

@@ -20,16 +20,17 @@ export default async function FeaturedBlogList() {
             </p>
           </div>
 
-          <Link href="/Blogs" className="primary-btn">
+          <Link aria-label="View all blogs" href="/Blogs" className="primary-btn">
             View All →
           </Link>
         </div>
-
-        <div className="grid grid-cols-1 gap-8 lg:grid-cols-2 xl:grid-cols-3">
+        <ul className="grid grid-cols-1 gap-8 lg:grid-cols-2 xl:grid-cols-3">
           {blogs.map((blog) => (
-            <BlogCard key={blog.id} blog={blog} />
+            <li key={blog.id}>
+              <BlogCard blog={blog} />
+            </li>
           ))}
-        </div>
+        </ul>
       </div>
     </section>
   )

@@ -22,7 +22,7 @@ export default async function FeaturedProjectList() {
             </p>
           </div>
 
-          <Link href="/Projects" className="primary-btn">
+          <Link aria-label="View all projects" href="/Projects" className="primary-btn">
             View All →
           </Link>
         </div>

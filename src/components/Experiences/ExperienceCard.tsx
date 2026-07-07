@@ -64,15 +64,19 @@ export default function ExperienceCard({ experience }: ExperienceCardProps) {
 
           {experience.companyWebsite && (
             <div className="mt-3">
-              <Link href={experience.companyWebsite} target="_blank" className="link-btn">
-                Visit Company →
+              <Link
+                aria-label={`Visit ${experience.company}'s website`}
+                href={experience.companyWebsite}
+                target="_blank"
+                className="link-btn"
+              >
+                Website →
               </Link>
             </div>
           )}
 
           {experience.summary && (
             <div className="mt-4 text-white">
-              {/* Replace with RichText renderer if using Payload Lexical */}
               <p>{experience.summary}</p>
             </div>
           )}

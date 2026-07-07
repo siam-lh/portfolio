@@ -33,11 +33,13 @@ const BlogList = ({
         ) : (
           <div className="space-y-6">
             <SearchBar initialQuery={query} />
-            <div className="grid grid-cols-1 gap-8 lg:grid-cols-2 xl:grid-cols-3">
+            <ul className="grid grid-cols-1 gap-8 lg:grid-cols-2 xl:grid-cols-3">
               {blogs.map((blog) => (
-                <BlogCard key={blog.id} blog={blog} />
+                <li key={blog.id}>
+                  <BlogCard blog={blog} />
+                </li>
               ))}
-            </div>
+            </ul>
             {totalPages > 1 && <Pagination currentPage={currentPage} totalPages={totalPages} />}
           </div>
         )}
