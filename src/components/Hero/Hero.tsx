@@ -17,9 +17,7 @@ export default async function HeroSection() {
             {hero?.name}
           </h1>
 
-          <h2 className="mt-4 text-xl font-semibold text-blue-400 sm:text-2xl">
-            {hero?.designation}
-          </h2>
+          <h2 className="mt-4 text-xl font-semibold sm:text-2xl">{hero?.designation}</h2>
 
           <p className="mt-6 leading-8">{hero?.description}</p>
 

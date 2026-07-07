@@ -14,7 +14,7 @@ export default async function TestimonialList() {
           <div className="w-full mx-auto">
             <h2 className="list-title">Testimonials</h2>
 
-            <p className="mt-3 text-white/85">
+            <p className="mt-3">
               Hear from the people I've worked with. Their experiences and feedback reflect my
               commitment to delivering high-quality work and fostering positive professional
               relationships.

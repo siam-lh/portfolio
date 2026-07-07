@@ -12,7 +12,7 @@ export default function TestimonialCard({ testimonial }: Props) {
 
   return (
     <article className="card-border-padded card-hover">
-      <Quote className="absolute right-6 top-6 h-10 w-10 text-cyan-400/20" />
+      <Quote className="absolute right-6 top-6 h-10 w-10 text-white" />
 
       <div className="mb-5 flex gap-1">
         {Array.from({ length: testimonial.rating ?? 5 }).map((_, index) => (
@@ -20,7 +20,7 @@ export default function TestimonialCard({ testimonial }: Props) {
         ))}
       </div>
 
-      <p className="mb-8 text-zinc-300">"{testimonial.message}"</p>
+      <p className="mb-8">"{testimonial.message}"</p>
 
       <div className="flex items-center gap-4">
         {photo?.url ? (
@@ -38,9 +38,9 @@ export default function TestimonialCard({ testimonial }: Props) {
         )}
 
         <div>
-          <h3 className="font-semibold text-white">{testimonial.name}</h3>
+          <h3 className="font-semibold">{testimonial.name}</h3>
 
-          <p className="text-sm text-zinc-400">
+          <p className="text-sm">
             {testimonial.designation}
             {testimonial.designation && testimonial.company && ' • '}
             {testimonial.company}

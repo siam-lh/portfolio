@@ -23,7 +23,7 @@ export default function BlogCard({ blog }: Props) {
       )}
 
       <div className="flex flex-1 flex-col p-4">
-        <div className="flex items-center gap-2 text-sm text-zinc-200">
+        <div className="flex items-center gap-2 text-sm">
           <Calendar size={15} />
           <span>{new Date(blog.createdAt).toLocaleDateString()}</span>
         </div>
