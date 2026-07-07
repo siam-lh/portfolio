@@ -16,7 +16,7 @@ export default function BlogDetails({ blog }: BlogDetailsProps) {
       <div className="mx-auto container">
         {/* Header */}
         <div className="mb-12">
-          <h1 className="text-4xl font-bold md:text-5xl">{blog.title}</h1>
+          <h1 className="card-title">{blog.title}</h1>
         </div>
 
         {/* Hero Image */}

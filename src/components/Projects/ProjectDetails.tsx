@@ -20,7 +20,7 @@ export default function ProjectDetails({ project }: ProjectDetailsProps) {
       <div className="mx-auto container">
         {/* Header */}
         <div className="mb-12">
-          <h1 className="text-4xl font-bold md:text-5xl">{project.title}</h1>
+          <h1 className="card-title">{project.title}</h1>
         </div>
 
         {/* Hero Image */}
@@ -40,31 +40,19 @@ export default function ProjectDetails({ project }: ProjectDetailsProps) {
         {/* Links */}
         <div className="mt-8 flex flex-wrap gap-4">
           {project.liveUrl && (
-            <Link
-              href={project.liveUrl}
-              target="_blank"
-              className="rounded-lg bg-black px-6 py-3 text-white transition hover:bg-neutral-800"
-            >
+            <Link href={project.liveUrl} target="_blank" className="primary-btn">
               Live Demo
             </Link>
           )}
 
           {project.githubUrl && (
-            <Link
-              href={project.githubUrl}
-              target="_blank"
-              className="rounded-lg border px-6 py-3 transition hover:bg-muted"
-            >
+            <Link href={project.githubUrl} target="_blank" className="primary-btn">
               GitHub Repository
             </Link>
           )}
 
           {project.demoVideo && (
-            <Link
-              href={project.demoVideo}
-              target="_blank"
-              className="rounded-lg border px-6 py-3 transition hover:bg-muted"
-            >
+            <Link href={project.demoVideo} target="_blank" className="primary-btn">
               Watch Demo
             </Link>
           )}
