@@ -187,7 +187,6 @@ export interface Media {
 export interface Skill {
   id: string;
   name: string;
-  slug: string;
   /**
    * Rate your proficiency from 0 (Beginner) to 5 (Expert).
    */
@@ -478,7 +477,6 @@ export interface MediaSelect<T extends boolean = true> {
  */
 export interface SkillsSelect<T extends boolean = true> {
   name?: T;
-  slug?: T;
   level?: T;
   icon?: T;
   updatedAt?: T;

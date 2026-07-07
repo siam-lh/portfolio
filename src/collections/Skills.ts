@@ -27,7 +27,7 @@ export const Skills: CollectionConfig = {
       }
     },
   },
-   versions: {
+  versions: {
     drafts: true,
   },
 
@@ -43,13 +43,6 @@ export const Skills: CollectionConfig = {
               type: 'text',
               required: true,
               unique: true,
-            },
-            {
-              name: 'slug',
-              type: 'text',
-              required: true,
-              unique: true,
-              index: true,
             },
             {
               name: 'level',
