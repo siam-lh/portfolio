@@ -26,7 +26,7 @@ export default async function RootLayout(props: { children: React.ReactNode }) {
           <img src="/Animated-Bg.svg" className="w-full h-full object-cover" alt="" />
         </div>
         <Navbar />
-        <main>{children}</main>
+        <main className="pt-[72px]">{children}</main>
         <Footer />
       </body>
     </html>
