@@ -2,6 +2,13 @@ import React from 'react'
 import './styles.css'
 import Navbar from '@/components/Navigation/Navbar'
 import Footer from '@/components/Footer/Footer'
+import { Inter } from 'next/font/google';
+
+const inter = Inter({
+  subsets: ['latin'],
+  variable: '--font-sans',
+  display: 'swap',
+});
 
 export const metadata = {
   description:
@@ -13,7 +20,7 @@ export default async function RootLayout(props: { children: React.ReactNode }) {
   const { children } = props
 
   return (
-    <html lang="en">
+    <html lang="en" className={inter.variable}>
       <body>
         <Navbar />
         <main>{children}</main>
