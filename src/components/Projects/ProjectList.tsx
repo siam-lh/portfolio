@@ -14,12 +14,12 @@ export default function ProjectsList({
   description = 'A collection of projects showcasing my work, technologies, and problem-solving experience.',
 }: Props) {
   return (
-    <section className="container py-6">
+    <section className="container">
       <div>
         <div className="mb-12 flex flex-col items-center text-center">
           <h1 className="list-title">{title}</h1>
 
-          <p className="mt-2 max-w-2xl text-gray-200">{description}</p>
+          <p className="mt-2 max-w-2xl">{description}</p>
         </div>
 
         {projects.length === 0 ? (

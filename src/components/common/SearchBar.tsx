@@ -42,7 +42,7 @@ export function SearchBar({ initialQuery }: { initialQuery: string }) {
       {isPending && (
         <Loader2
           size={18}
-          className="absolute right-4 top-1/2 -translate-y-1/2 animate-spin text-zinc-400"
+          className="absolute right-4 top-1/2 -translate-y-1/2 animate-spin text-white"
         />
       )}
     </div>

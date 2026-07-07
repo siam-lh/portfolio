@@ -25,7 +25,7 @@ const BlogList = ({
         <div className="mb-12 flex flex-col items-center text-center">
           <h1 className="list-title">{title}</h1>
 
-          <p className="mt-2 max-w-4xl text-gray-200">{description}</p>
+          <p className="mt-2 max-w-4xl">{description}</p>
         </div>
 
         {blogs?.length === 0 ? (

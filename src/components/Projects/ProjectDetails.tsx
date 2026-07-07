@@ -16,8 +16,8 @@ export default function ProjectDetails({ project }: ProjectDetailsProps) {
     project.technologies?.filter((tech): tech is Skill => typeof tech === 'object') ?? []
 
   return (
-    <section className="py-16">
-      <div className="mx-auto max-w-7xl px-6">
+    <section>
+      <div className="mx-auto container">
         {/* Header */}
         <div className="mb-12">
           <h1 className="text-4xl font-bold md:text-5xl">{project.title}</h1>

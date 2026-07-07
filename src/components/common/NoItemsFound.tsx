@@ -8,9 +8,7 @@ export default function NoItemsFound({ itemName }: NoItemsFoundProps) {
       <div className="text-center">
         <h2 className="text-xl font-semibold text-white">No {itemName} found</h2>
 
-        <p className="mt-2 text-sm text-gray-400">
-          There are currently no {itemName.toLowerCase()} available.
-        </p>
+        <p className="mt-2 text-sm">There are currently no {itemName.toLowerCase()} available.</p>
       </div>
     </div>
   )

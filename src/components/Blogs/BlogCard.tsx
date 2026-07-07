@@ -9,10 +9,7 @@ type Props = {
 
 export default function BlogCard({ blog }: Props) {
   return (
-    <Link
-      href={`/Blogs/${blog.slug}`}
-      className="flex h-full flex-col card-border card-hover bg-black"
-    >
+    <Link href={`/Blogs/${blog.slug}`} className="flex h-full flex-col card-border card-hover">
       {blog.image && typeof blog.image !== 'string' && blog.image.url && (
         <div className="relative h-48 w-full">
           <Image
@@ -33,7 +30,7 @@ export default function BlogCard({ blog }: Props) {
 
         <h2 className="card-title">{blog.title}</h2>
 
-        <p className="mt-2 text-sm text-text-secondary">{blog.shortDescription}</p>
+        <p className="mt-2 text-sm">{blog.shortDescription}</p>
 
         <div className="mt-auto flex gap-4 pt-6">
           {blog.relatedTags?.map((tag) => {

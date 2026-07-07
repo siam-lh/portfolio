@@ -31,7 +31,7 @@ function ProjectCard({ project }: Props) {
           <h2 className="card-title">{project.title}</h2>
         </Link>
 
-        <p className="mt-2 text-sm text-text-secondary">{project.shortDescription}</p>
+        <p className="mt-2 text-sm">{project.shortDescription}</p>
 
         {/* Bottom Links */}
         <div className="mt-auto flex gap-4 pt-6">

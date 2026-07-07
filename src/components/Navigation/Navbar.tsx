@@ -8,8 +8,12 @@ export default async function Navbar() {
   const settings = await getSiteSettings()
   const imageUrl = isMedia(settings?.logo) ? settings?.logo?.url : undefined
   return (
-    <header className="sticky top-0 z-50 border-b border-zinc-800 bg-zinc-950/80 backdrop-blur">
-      <div className="container mx-auto flex h-16 items-center justify-between">
+    <header className="sticky top-0 z-50 border-b border-white/50 backdrop-blur">
+      <div
+        className={
+          'common container bg-[var(--background-color)] mx-auto flex h-16 items-center justify-between'
+        }
+      >
         <Link href="/" className="flex items-center gap-3 font-semibold text-white">
           {imageUrl ? (
             <Image

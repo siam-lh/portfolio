@@ -13,7 +13,7 @@ export default async function ExperienceList() {
           <div className="">
             <h2 className="list-title">Experiences</h2>
 
-            <p className="mt-3 text-gray-200">
+            <p className="mt-3">
               This highlights my professional journey, showcasing the roles I've held, the companies
               I've contributed to, and the skills I've honed along the way. Each experience reflects
               my commitment to delivering impactful solutions and continuous growth in the tech

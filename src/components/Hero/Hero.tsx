@@ -7,11 +7,11 @@ export default async function HeroSection() {
   const hero = await getHero()
   const imageUrl = isMedia(hero?.profileImage) ? hero?.profileImage?.url : undefined
   return (
-    <section className="bg-[url('/Animated-Bg.svg')] bg-cover bg-center bg-no-repeat bg-zinc-900/70">
+    <section>
       <div className="w-full mx-auto flex min-h-[90vh] flex-col-reverse items-center gap-12 px-6 lg:flex-row lg:justify-between container">
         {/* Left Content */}
         <div className="text-center lg:text-left">
-          <p className="text-lg text-gray-400">{hero?.greeting}</p>
+          <p className="text-lg">{hero?.greeting}</p>
 
           <h1 className="mt-2 text-4xl font-extrabold leading-tight sm:text-5xl lg:text-6xl">
             {hero?.name}
@@ -21,7 +21,7 @@ export default async function HeroSection() {
             {hero?.designation}
           </h2>
 
-          <p className="mt-6 leading-8 text-gray-300">{hero?.description}</p>
+          <p className="mt-6 leading-8">{hero?.description}</p>
 
           <div className="mt-10 flex flex-col gap-4 sm:flex-row sm:justify-center lg:justify-start">
             {hero?.primaryButtonLink && (

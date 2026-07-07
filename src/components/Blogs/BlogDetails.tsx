@@ -12,8 +12,8 @@ export default function BlogDetails({ blog }: BlogDetailsProps) {
   const tags = blog?.relatedTags?.filter((tag): tag is BlogTag => typeof tag === 'object') ?? []
 
   return (
-    <section className="py-16">
-      <div className="mx-auto max-w-7xl px-6">
+    <section className="">
+      <div className="mx-auto container">
         {/* Header */}
         <div className="mb-12">
           <h1 className="text-4xl font-bold md:text-5xl">{blog.title}</h1>

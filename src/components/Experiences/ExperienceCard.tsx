@@ -30,7 +30,7 @@ export default function ExperienceCard({ experience }: ExperienceCardProps) {
               className="rounded-lg border object-contain"
             />
           ) : (
-            <div className="flex h-16 w-16 items-center justify-center rounded-lg border bg-gray-100 text-xl font-bold">
+            <div className="flex h-16 w-16 items-center justify-center rounded-lg borde text-xl font-bold">
               {experience.company.charAt(0)}
             </div>
           )}
@@ -44,7 +44,7 @@ export default function ExperienceCard({ experience }: ExperienceCardProps) {
               <p className="card-subtitle">{experience.company}</p>
             </div>
 
-            <span className="rounded-full bg-blue-100 px-3 py-1 text-sm text-blue-700">
+            <span className="rounded-full border border-white px-3 py-1 text-sm">
               {experience.employmentType?.toUpperCase()}
             </span>
           </div>
