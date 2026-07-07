@@ -614,15 +614,26 @@ export interface PayloadMigrationsSelect<T extends boolean = true> {
  */
 export interface Hero {
   id: string;
-  greeting?: string | null;
-  name: string;
-  designation: string;
-  description: string;
-  profileImage?: (string | null) | Media;
-  primaryButtonText?: string | null;
-  primaryButtonLink?: string | null;
-  secondaryButtonText?: string | null;
-  secondaryButtonLink?: string | null;
+  content: {
+    greeting?: string | null;
+    name: string;
+    designation: string;
+    description: string;
+  };
+  profile?: {
+    profileImage?: (string | null) | Media;
+  };
+  primaryButton?: {
+    text?: string | null;
+    link?: string | null;
+  };
+  secondaryButton?: {
+    text?: string | null;
+    /**
+     * Optional PDF upload.
+     */
+    resume?: (string | null) | Media;
+  };
   _status?: ('draft' | 'published') | null;
   updatedAt?: string | null;
   createdAt?: string | null;
@@ -681,10 +692,6 @@ export interface SiteSetting {
     linkedin?: string | null;
     twitter?: string | null;
     email?: string | null;
-    /**
-     * Uploaded PDF. A download link is generated automatically.
-     */
-    resume?: (string | null) | Media;
   };
   /**
    * Use {year} as a placeholder — it is replaced at render time.
@@ -699,15 +706,31 @@ export interface SiteSetting {
  * via the `definition` "hero_select".
  */
 export interface HeroSelect<T extends boolean = true> {
-  greeting?: T;
-  name?: T;
-  designation?: T;
-  description?: T;
-  profileImage?: T;
-  primaryButtonText?: T;
-  primaryButtonLink?: T;
-  secondaryButtonText?: T;
-  secondaryButtonLink?: T;
+  content?:
+    | T
+    | {
+        greeting?: T;
+        name?: T;
+        designation?: T;
+        description?: T;
+      };
+  profile?:
+    | T
+    | {
+        profileImage?: T;
+      };
+  primaryButton?:
+    | T
+    | {
+        text?: T;
+        link?: T;
+      };
+  secondaryButton?:
+    | T
+    | {
+        text?: T;
+        resume?: T;
+      };
   _status?: T;
   updatedAt?: T;
   createdAt?: T;
@@ -743,7 +766,6 @@ export interface SiteSettingsSelect<T extends boolean = true> {
         linkedin?: T;
         twitter?: T;
         email?: T;
-        resume?: T;
       };
   footerText?: T;
   _status?: T;

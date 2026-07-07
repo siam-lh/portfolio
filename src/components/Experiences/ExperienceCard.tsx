@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import Image from 'next/image'
 import { Experience, Media } from '@/payload-types'
+import { isMedia } from '@/lib/helper'
 
 interface ExperienceCardProps {
   experience: Experience
@@ -14,27 +15,22 @@ function formatDate(date: string) {
 }
 
 export default function ExperienceCard({ experience }: ExperienceCardProps) {
-  const logo = typeof experience.companyLogo === 'object' ? (experience.companyLogo as Media) : null
-
+  const imageUrl = isMedia(experience?.companyLogo) ? experience?.companyLogo : undefined
   return (
     <div className="card-border-padded card-hover">
       <div className="flex flex-col md:flex-row gap-5">
         {/* Logo */}
-        <div className="flex-0">
-          {logo?.url ? (
+        {imageUrl?.url && (
+          <div className="shrink-0 justify-items-center">
             <Image
-              src={logo.url}
+              src={imageUrl.url}
               alt={experience.company}
-              width={64}
-              height={64}
-              className="rounded-lg border object-contain"
+              width={56}
+              height={56}
+              className="h-14 w-14 rounded-full border object-cover"
             />
-          ) : (
-            <div className="flex h-16 w-16 items-center justify-center rounded-lg borde text-xl font-bold">
-              {experience.company.charAt(0)}
-            </div>
-          )}
-        </div>
+          </div>
+        )}
 
         {/* Content */}
         <div className="flex-1">
