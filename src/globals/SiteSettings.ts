@@ -22,7 +22,7 @@ export const SiteSettings: GlobalConfig = {
       }
     },
   },
-   versions: {
+  versions: {
     drafts: true,
   },
   fields: [
@@ -178,15 +178,6 @@ export const SiteSettings: GlobalConfig = {
               admin: { width: '50%' },
             },
           ],
-        },
-        {
-          name: 'resume',
-          type: 'upload',
-          label: 'Resume / CV (PDF)',
-          relationTo: 'media',
-          admin: {
-            description: 'Uploaded PDF. A download link is generated automatically.',
-          },
         },
       ],
     },

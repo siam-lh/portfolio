@@ -3,9 +3,10 @@ import type { GlobalConfig } from 'payload'
 export const Hero: GlobalConfig = {
   slug: 'hero',
 
-    access: {
+  access: {
     read: ({ req }) => {
       if (req.user) return true
+
       return {
         or: [
           {
@@ -22,53 +23,91 @@ export const Hero: GlobalConfig = {
       }
     },
   },
-   versions: {
+
+  versions: {
     drafts: true,
   },
 
   fields: [
     {
-      name: 'greeting',
-      type: 'text',
-      defaultValue: "Hi, I'm",
+      type: 'group',
+      name: 'content',
+      label: 'Hero Content',
+      fields: [
+        {
+          name: 'greeting',
+          type: 'text',
+          defaultValue: "Hi, I'm",
+        },
+        {
+          name: 'name',
+          type: 'text',
+          required: true,
+        },
+        {
+          name: 'designation',
+          type: 'text',
+          required: true,
+        },
+        {
+          name: 'description',
+          type: 'textarea',
+          required: true,
+        },
+      ],
     },
+
     {
-      name: 'name',
-      type: 'text',
-      required: true,
+      type: 'group',
+      name: 'profile',
+      label: 'Profile',
+      fields: [
+        {
+          name: 'profileImage',
+          type: 'upload',
+          label: 'Profile Image',
+          relationTo: 'media',
+        },
+      ],
     },
+
     {
-      name: 'designation',
-      type: 'text',
-      required: true,
+      type: 'group',
+      name: 'primaryButton',
+      label: 'Primary Button',
+      fields: [
+        {
+          name: 'text',
+          type: 'text',
+          defaultValue: 'View Projects',
+        },
+        {
+          name: 'link',
+          type: 'text',
+        },
+      ],
     },
+
     {
-      name: 'description',
-      type: 'textarea',
-      required: true,
-    },
-    {
-      name: 'profileImage',
-      type: 'upload',
-      relationTo: 'media',
-    },
-    {
-      name: 'primaryButtonText',
-      type: 'text',
-      defaultValue: 'View Projects',
-    },
-    {
-      name: 'primaryButtonLink',
-      type: 'text',
-    },
-    {
-      name: 'secondaryButtonText',
-      type: 'text',
-      defaultValue: 'Download Resume',
-    },
-    {
-      name: 'secondaryButtonLink',
-      type: 'text',
+      type: 'group',
+      name: 'secondaryButton',
+      label: 'Secondary Button',
+      fields: [
+        {
+          name: 'text',
+          type: 'text',
+          defaultValue: 'Download Resume',
+        },
+        {
+          name: 'resume',
+          type: 'upload',
+          label: 'Resume / CV (PDF)',
+          relationTo: 'media',
+          admin: {
+            description: 'Optional PDF upload.',
+          },
+        },
+      ],
     },
   ],
 }
