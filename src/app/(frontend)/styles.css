@@ -3,6 +3,7 @@
 :root {
   --font-sans: 'Inter', system-ui, sans-serif;
   --font-mono: 'Inter', monospace;
+  --background-color: #06021d;
 }
 
 * {
@@ -12,8 +13,6 @@
 html {
   font-size: 18px;
   line-height: 32px;
-
-  background: rgb(0, 0, 0);
   -webkit-font-smoothing: antialiased;
 }
 
@@ -27,9 +26,10 @@ body {
   font-family: var(--font-sans);
   font-size: 18px;
   line-height: 32px;
-
+  color: white;
   margin: 0;
   color: rgb(1000, 1000, 1000);
+  background-color: var(--background-color);
 
   @media (max-width: 1024px) {
     font-size: 15px;
@@ -68,9 +68,13 @@ h1 {
 svg {
   vertical-align: middle;
 }
-header .container {
+.common.container {
   padding-top: 0px;
   padding-bottom: 0px;
+  @media (min-width: 1024px) {
+    padding-top: 0px;
+    padding-bottom: 0px;
+  }
 }
 .container {
   padding: 80px 45px;
@@ -144,10 +148,10 @@ header .container {
 }
 @layer components {
   .card-border {
-    @apply rounded-2xl border border-white backdrop-blur;
+    @apply rounded-2xl bg-[var(--background-color)] border border-white shadow-2xl backdrop-blur;
   }
   .card-border-padded {
-    @apply rounded-2xl border border-white p-6 backdrop-blur;
+    @apply rounded-2xl bg-[var(--background-color)] border border-white shadow-2xl p-6 backdrop-blur;
   }
 
   .card-hover {
