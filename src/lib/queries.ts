@@ -1,6 +1,7 @@
 import { cache } from 'react'
 import { getPayload, type Payload, type PaginatedDocs } from 'payload'
 import config from '@payload-config'
+import { draftMode } from 'next/headers'
 import type {
   Testimonial,
   Skill,
@@ -15,12 +16,6 @@ import type {
 // Client
 // ---------------------------------------------------------------------------
 
-/**
- * Lazily instantiates Payload on first use instead of at module top-level.
- * `cache()` memoizes it per request/render-pass in Server Components, and
- * (unlike a bare top-level `await getPayload(...)`) it won't throw at
- * import time or hang the module graph if init fails once.
- */
 const getPayloadClient = cache((): Promise<Payload> => {
   return getPayload({ config })
 })
@@ -29,11 +24,7 @@ const getPayloadClient = cache((): Promise<Payload> => {
 // Error handling
 // ---------------------------------------------------------------------------
 
-/**
- * Wraps a Payload query so a single failing collection/global can't take
- * down an entire page render. Logs the error and returns a safe fallback.
- */
-async function safeQuery<T>(
+async function commonQuery<T>(
   label: string,
   fallback: T,
   fn: (payload: Payload) => Promise<T>,
@@ -67,7 +58,7 @@ function emptyResult<T>(): PaginatedDocs<T> {
 // ---------------------------------------------------------------------------
 
 export const getTestimonials = cache((): Promise<PaginatedDocs<Testimonial>> => {
-  return safeQuery('testimonials', emptyResult<Testimonial>(), (payload) =>
+  return commonQuery('testimonials', emptyResult<Testimonial>(), (payload) =>
     payload.find({
       collection: 'testimonials',
       sort: 'displayOrder',
@@ -78,7 +69,7 @@ export const getTestimonials = cache((): Promise<PaginatedDocs<Testimonial>> => 
 })
 
 export const getSkills = cache((): Promise<PaginatedDocs<Skill>> => {
-  return safeQuery('skills', emptyResult<Skill>(), (payload) =>
+  return commonQuery('skills', emptyResult<Skill>(), (payload) =>
     payload.find({
       collection: 'skills',
       sort: 'name',
@@ -89,12 +80,11 @@ export const getSkills = cache((): Promise<PaginatedDocs<Skill>> => {
 })
 
 export const getFeaturedProjects = cache((): Promise<PaginatedDocs<Project>> => {
-  return safeQuery('featured projects', emptyResult<Project>(), (payload) =>
+  return commonQuery('featured projects', emptyResult<Project>(), (payload) =>
     payload.find({
       collection: 'projects',
       where: {
         featured: { equals: true },
-        _status: { equals: 'published' },
       },
       sort: 'displayOrder',
       depth: 1,
@@ -104,21 +94,18 @@ export const getFeaturedProjects = cache((): Promise<PaginatedDocs<Project>> => 
 })
 
 export const getAllProjects = cache((): Promise<PaginatedDocs<Project>> => {
-  return safeQuery('all projects', emptyResult<Project>(), (payload) =>
+  return commonQuery('all projects', emptyResult<Project>(), (payload) =>
     payload.find({
       collection: 'projects',
       sort: 'displayOrder',
       depth: 1,
-      where: {
-        _status: { equals: 'published' },
-      },
       pagination: false,
     }),
   )
 })
 
 export const getFeaturedBlogs = cache((): Promise<PaginatedDocs<Blog>> => {
-  return safeQuery('featured blogs', emptyResult<Blog>(), (payload) =>
+  return commonQuery('featured blogs', emptyResult<Blog>(), (payload) =>
     payload.find({
       collection: 'blogs',
       where: {
@@ -132,7 +119,7 @@ export const getFeaturedBlogs = cache((): Promise<PaginatedDocs<Blog>> => {
 })
 
 export const getExperiences = cache((): Promise<PaginatedDocs<Experience>> => {
-  return safeQuery('experiences', emptyResult<Experience>(), (payload) =>
+  return commonQuery('experiences', emptyResult<Experience>(), (payload) =>
     payload.find({
       collection: 'experience',
       sort: 'displayOrder',
@@ -146,12 +133,8 @@ export const getExperiences = cache((): Promise<PaginatedDocs<Experience>> => {
 // Blogs — search + pagination
 // ---------------------------------------------------------------------------
 
-/**
- * `cache()` still dedupes correctly here since `q`/`page` are primitives —
- * React keys the memoization on the serialized argument list.
- */
 export const getAllBlogs = cache((q?: string, page?: number): Promise<PaginatedDocs<Blog>> => {
-  return safeQuery('blogs (search)', emptyResult<Blog>(), (payload) =>
+  return commonQuery('blogs (search)', emptyResult<Blog>(), (payload) =>
     payload.find({
       collection: 'blogs',
       sort: '-updatedAt',
@@ -172,7 +155,7 @@ export const getAllBlogs = cache((q?: string, page?: number): Promise<PaginatedD
 // ---------------------------------------------------------------------------
 
 export const getAllProjectSlugs = cache((): Promise<string[]> => {
-  return safeQuery('project slugs', [], async (payload) => {
+  return commonQuery('project slugs', [], async (payload) => {
     const result = await payload.find({
       collection: 'projects',
       limit: 0,
@@ -183,11 +166,13 @@ export const getAllProjectSlugs = cache((): Promise<string[]> => {
 })
 
 export const getProjectBySlug = cache((slug: string): Promise<Project | null> => {
-  return safeQuery(`project by slug "${slug}"`, null, async (payload) => {
+  return commonQuery(`project by slug "${slug}"`, null, async (payload) => {
+    const { isEnabled: isDraftMode } = await draftMode()
     const result = await payload.find({
       collection: 'projects',
       depth: 1,
       where: { slug: { equals: slug } },
+      draft: isDraftMode,
       limit: 1,
     })
     return result.docs[0] ?? null
@@ -195,7 +180,7 @@ export const getProjectBySlug = cache((slug: string): Promise<Project | null> =>
 })
 
 export const getAllBlogsSlugs = cache((): Promise<string[]> => {
-  return safeQuery('blog slugs', [], async (payload) => {
+  return commonQuery('blog slugs', [], async (payload) => {
     const result = await payload.find({
       collection: 'blogs',
       limit: 0,
@@ -206,11 +191,13 @@ export const getAllBlogsSlugs = cache((): Promise<string[]> => {
 })
 
 export const getBlogBySlug = cache((slug: string): Promise<Blog | null> => {
-  return safeQuery(`blog by slug "${slug}"`, null, async (payload) => {
+  return commonQuery(`blog by slug "${slug}"`, null, async (payload) => {
+    const { isEnabled: isDraftMode } = await draftMode()
     const result = await payload.find({
       collection: 'blogs',
       depth: 1,
       where: { slug: { equals: slug } },
+      draft: isDraftMode,
       limit: 1,
     })
     return result.docs[0] ?? null
@@ -222,7 +209,7 @@ export const getBlogBySlug = cache((slug: string): Promise<Blog | null> => {
 // ---------------------------------------------------------------------------
 
 export const getHero = cache((): Promise<Hero | null> => {
-  return safeQuery('hero global', null, (payload) =>
+  return commonQuery('hero global', null, (payload) =>
     payload.findGlobal({
       slug: 'hero',
       depth: 1,
@@ -231,7 +218,7 @@ export const getHero = cache((): Promise<Hero | null> => {
 })
 
 export const getSiteSettings = cache((): Promise<SiteSetting | null> => {
-  return safeQuery('site-settings global', null, (payload) =>
+  return commonQuery('site-settings global', null, (payload) =>
     payload.findGlobal({
       slug: 'site-settings',
       depth: 1,

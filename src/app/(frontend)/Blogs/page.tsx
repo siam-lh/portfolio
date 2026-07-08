@@ -1,8 +1,5 @@
 import { getAllBlogs } from '@/lib/queries'
-import { SearchBar } from '@/components/common/SearchBar'
-import { Pagination } from '@/components/common/Pagination'
 import BlogList from '@/components/Blogs/BlogList'
-import NoItemsFound from '@/components/common/NoItemsFound'
 
 export default async function BlogPage({
   searchParams,
@@ -14,7 +11,5 @@ export default async function BlogPage({
 
   const { docs, totalPages } = await getAllBlogs(q || undefined, currentPage)
 
-  return (
-    <BlogList blogs={docs} query={q} currentPage={currentPage} totalPages={totalPages} /> 
-  )
+  return <BlogList blogs={docs} query={q} currentPage={currentPage} totalPages={totalPages} />
 }

@@ -6,6 +6,49 @@ export const Blogs: CollectionConfig = {
   admin: {
     useAsTitle: 'title',
     defaultColumns: ['title', 'featured', 'displayOrder', 'tags'],
+    livePreview: {
+      url: ({ data }) => {
+        return `${process.env.NEXT_PUBLIC_SERVER_URL || 'http://localhost:3000'}/api/preview/blog?secret=${process.env.PAYLOAD_PREVIEW_SECRET}&slug=${data.slug}`
+      },
+      breakpoints: [
+        {
+          label: 'Mobile (S)',
+          name: 'mobile-sm',
+          width: 375,
+          height: 667,
+        },
+        {
+          label: 'Mobile (L)',
+          name: 'mobile-lg',
+          width: 430,
+          height: 932,
+        },
+        {
+          label: 'Tablet',
+          name: 'tablet',
+          width: 768,
+          height: 1024,
+        },
+        {
+          label: 'Laptop',
+          name: 'laptop',
+          width: 1280,
+          height: 800,
+        },
+        {
+          label: 'Desktop',
+          name: 'desktop',
+          width: 1440,
+          height: 900,
+        },
+        {
+          label: 'Large Desktop',
+          name: 'desktop-xl',
+          width: 1920,
+          height: 1080,
+        },
+      ],
+    },
   },
 
   access: {
@@ -27,8 +70,13 @@ export const Blogs: CollectionConfig = {
       }
     },
   },
-   versions: {
-    drafts: true,
+  versions: {
+    drafts: {
+      autosave: {
+        interval: 1000,
+      },
+    },
+    maxPerDoc: 25,
   },
 
   fields: [

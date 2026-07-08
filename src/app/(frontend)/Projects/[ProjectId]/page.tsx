@@ -3,6 +3,8 @@ import type { Metadata } from 'next'
 import { getAllProjectSlugs, getProjectBySlug } from '@/lib/queries'
 import ProjectDetails from '@/components/Projects/ProjectDetails'
 import { isMedia } from '@/lib/helper'
+import { draftMode } from 'next/headers'
+import { RefreshRouteOnSave } from '@/components/common/RefreshRouteOnSave'
 
 export const revalidate = 3600
 export const dynamicParams = true
@@ -39,6 +41,12 @@ export default async function ProjectPage({ params }: { params: Promise<{ Projec
   const { ProjectId } = await params
   const project = await getProjectBySlug(ProjectId)
   if (!project) notFound()
+  const { isEnabled: isDraftMode } = await draftMode()
 
-  return <ProjectDetails project={project} />
+  return (
+    <>
+      <ProjectDetails project={project} />
+      {isDraftMode && <RefreshRouteOnSave />}
+    </>
+  )
 }

@@ -3,6 +3,8 @@ import type { Metadata } from 'next'
 import { getAllBlogsSlugs, getBlogBySlug } from '@/lib/queries'
 import BlogDetails from '@/components/Blogs/BlogDetails'
 import { isMedia } from '@/lib/helper'
+import { RefreshRouteOnSave } from '@/components/common/RefreshRouteOnSave'
+import { draftMode } from 'next/headers'
 
 export const revalidate = 3600
 export const dynamicParams = true
@@ -38,6 +40,11 @@ export default async function BlogPage({ params }: { params: Promise<{ BlogId: s
   const { BlogId } = await params
   const blog = await getBlogBySlug(BlogId)
   if (!blog) notFound()
-
-  return <BlogDetails blog={blog} />
+  const { isEnabled: isDraftMode } = await draftMode()
+  return (
+    <>
+      <BlogDetails blog={blog} />
+      {isDraftMode && <RefreshRouteOnSave />}
+    </>
+  )
 }
